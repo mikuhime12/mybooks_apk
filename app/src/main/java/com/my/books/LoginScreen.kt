@@ -1,6 +1,7 @@
 package com.my.books
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -38,14 +39,19 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.foundation.layout.Row
 import androidx.compose.ui.Alignment
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.material3.Button
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.foundation.Image
+
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(onLoginSuccess : () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("")}
     var passwordVisible by remember { mutableStateOf(false)}
@@ -125,7 +131,7 @@ fun LoginScreen() {
                     value = email,
                     onValueChange = {email = it},
                     placeholder =  {Text("nama@gmail.com", color= Color.LightGray)},
-                    leadingIcon = { Icon(painter = painterResource(id = R.drawable.email), contentDescription = null, tint = Color.Gray)},
+                    leadingIcon = { Icon(painter = painterResource(id = R.drawable.email), contentDescription = null, tint = Color.Gray, modifier = Modifier.size(30.dp))},
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(
@@ -157,8 +163,8 @@ fun LoginScreen() {
                 OutlinedTextField(
                     value = password,
                     onValueChange = {password = it},
-                    placeholder = {Text("........", color = Color.LightGray)},
-                    leadingIcon = { Icon(painter = painterResource(id = R.drawable.key), contentDescription = null, tint = Color.Gray)},
+                    placeholder = {Text("........", color = Color.LightGray, modifier = Modifier.size(30.dp))},
+                    leadingIcon = { Icon(painter = painterResource(id = R.drawable.key), contentDescription = null, tint = Color.Gray, modifier = Modifier.size(30.dp))},
                     trailingIcon = {
                         val icon = if (passwordVisible) R.drawable.eye else R.drawable.eye_off
                     },
@@ -172,18 +178,99 @@ fun LoginScreen() {
                     )
                 )
 
+                Spacer(modifier = Modifier.height(24.dp))
+
+                Button(
+                    onClick = {onLoginSuccess()},
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(50.dp),
+                    shape = RoundedCornerShape(12.dp),
+                    colors = ButtonDefaults.buttonColors(containerColor = primaryColor)
+                ) {
+                    Row(
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.Center
+                    ){
+                        Text("Masuk", fontSize = 16.sp, fontWeight = FontWeight.Bold, color= Color.White)
+
+                        Spacer(modifier = Modifier.width(8.dp))
+
+                        Icon(
+                            painter = painterResource(id = R.drawable.arrow),
+                            contentDescription = null,
+                            modifier = Modifier.size(30.dp)
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ){
+                    HorizontalDivider(modifier = Modifier.weight(1f), color = Color(0xFFE2E8F0))
+                    Text(
+                        text= "Atau Masuk Dengan",
+                        fontSize = 11.sp,
+                        color = Color(0xFF94A3B8),
+                        modifier = Modifier.padding(horizontal = 10.dp)
+                    )
+                    HorizontalDivider(modifier = Modifier.weight(1f), color = Color(0xFFE2E8F0))
+                }
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Row(
+                 modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(12.dp)
+                ){
+                    LoginSocialButton(text= "Google", iconRes = R.drawable.google, modifier = Modifier.weight(1f))
+                    LoginSocialButton(text= "Apple", iconRes = R.drawable.ios, modifier = Modifier.weight(1f))
+                }
+                }
             }
 
+        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.padding(24.dp))
 
-
-
-
+        Row(
+            modifier = Modifier.padding(bottom = 24.dp),
+            horizontalArrangement = Arrangement.Center
+        ){
+            Text("Belum punya akun?", color = Color(0xFF64748B), fontSize = 14.sp )
+            Text(
+                text= "Daftar Sekarang",
+                color = primaryColor,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.clickable {}
+            )
         }
-
-
-
-
-
+        }
     }
 
+
+@Composable
+fun LoginSocialButton(
+    text: String,
+    iconRes: Int,
+    modifier: Modifier = Modifier
+){
+    Row(
+        modifier = modifier
+            .border(1.dp, Color(0xFFE2E8F0), RoundedCornerShape(12.dp))
+            .clip(RoundedCornerShape(12.dp))
+            .clickable {}
+            .padding(vertical = 12.dp),
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ){
+        Image(painter = painterResource(id = iconRes), contentDescription = null,modifier = Modifier.size(18.dp))
+        Spacer(modifier = Modifier.width(8.dp))
+
+        Text(text = text, fontSize = 14.sp, fontWeight = FontWeight.Medium, color = Color(0xFF1E293B))
+    }
 }
+

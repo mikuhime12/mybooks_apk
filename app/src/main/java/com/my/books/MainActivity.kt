@@ -37,7 +37,11 @@ fun AppNavigation() {
         }
 
         composable<LoginRoute> {
-            LoginScreen()
+            LoginScreen(onLoginSuccess = {
+                navController.navigate(HomeRoute) {
+                    popUpTo(LoginRoute) {inclusive = true}
+                }
+            })
         }
     }
 }

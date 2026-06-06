@@ -48,6 +48,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.material3.Button
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.foundation.Image
+import androidx.compose.ui.tooling.preview.Preview
 
 
 @Composable
@@ -272,5 +273,16 @@ fun LoginSocialButton(
 
         Text(text = text, fontSize = 14.sp, fontWeight = FontWeight.Medium, color = Color(0xFF1E293B))
     }
+}
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+@Composable
+fun LoginScreenPreview() {
+    LoginScreen(
+        onLoginSuccess = {}
+    )
 }
 

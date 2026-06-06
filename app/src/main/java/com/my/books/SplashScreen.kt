@@ -1,4 +1,5 @@
 package com.my.books
+import android.window.SplashScreen
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -34,6 +35,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun SplashScreen(onTimeout: () -> Unit) {
@@ -151,4 +153,14 @@ fun SplashScreen(onTimeout: () -> Unit) {
             )
         }
     }
+}
+@Preview(
+    showBackground = true,
+    showSystemUi = true
+)
+@Composable
+fun SplashScreenPreview() {
+    SplashScreen(
+        onTimeout = {}
+    )
 }

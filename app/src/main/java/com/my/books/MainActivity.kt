@@ -43,6 +43,10 @@ fun AppNavigation() {
                 }
             })
         }
+
+        composable<HomeRoute> {
+            HomeScreen()
+        }
     }
 }
 

@@ -11,3 +11,7 @@ object LoginRoute
 @Serializable
 object HomeRoute
 
+@Serializable
+object AddRoute
+
+

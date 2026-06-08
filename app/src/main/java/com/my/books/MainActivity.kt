@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -45,8 +46,14 @@ fun AppNavigation() {
         }
 
         composable<HomeRoute> {
-            HomeScreen()
+            HomeScreen(onClick = {
+                navController.navigate(AddRoute)
+            })
         }
+
+
+
+
     }
 }
 

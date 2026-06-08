@@ -350,7 +350,7 @@ fun AddScreenBottomBar(
             horizontalArrangement = Arrangement.SpaceEvenly,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Tab Home
+
             AddScreenNavItem(
                 label = "Home",
                 icon = Icons.Outlined.Home,

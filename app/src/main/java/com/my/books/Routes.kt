@@ -14,4 +14,7 @@ object HomeRoute
 @Serializable
 object AddRoute
 
+@Serializable
+object LibraryRoute
+
 

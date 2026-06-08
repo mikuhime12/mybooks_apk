@@ -26,9 +26,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// =============================================
-// WARNA TEMA
-// =============================================
+
 val PrimaryBlue = Color(0xFF1A3A6B)
 val AccentBlue = Color(0xFF2D6FBF)
 val LightBlue = Color(0xFFE8F0FA)
@@ -38,9 +36,7 @@ val TextPrimary = Color(0xFF1A2B4A)
 val TextSecondary = Color(0xFF6B7A99)
 val White = Color(0xFFFFFFFF)
 
-// =============================================
-// SCREEN UTAMA
-// =============================================
+
 @Composable
 fun AddScreen(
     selectedTab: Int = 1,
@@ -133,9 +129,7 @@ fun AddScreen(
     }
 }
 
-// =============================================
-// TOP APP BAR
-// =============================================
+
 @Composable
 fun AddScreenTopBar() {
     Row(
@@ -182,9 +176,7 @@ fun AddScreenTopBar() {
     }
 }
 
-// =============================================
-// UPLOAD COVER BUKU
-// =============================================
+
 @Composable
 fun AddScreenUploadCover() {
     Column {
@@ -243,9 +235,7 @@ fun AddScreenUploadCover() {
     }
 }
 
-// =============================================
-// INPUT FIELD
-// =============================================
+
 @Composable
 fun AddScreenInputField(
     label: String,
@@ -291,9 +281,7 @@ fun AddScreenInputField(
     }
 }
 
-// =============================================
-// TOMBOL SIMPAN KE WISHLIST
-// =============================================
+
 @Composable
 fun AddScreenWishlistButton(onClick: () -> Unit) {
     Button(
@@ -324,9 +312,7 @@ fun AddScreenWishlistButton(onClick: () -> Unit) {
     }
 }
 
-// =============================================
-// BOTTOM NAVIGATION BAR
-// =============================================
+
 @Composable
 fun AddScreenBottomBar(
     selectedTab: Int,

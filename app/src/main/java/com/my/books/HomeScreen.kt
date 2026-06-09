@@ -71,16 +71,14 @@ fun HomeScreen(
     ) { innerPadding ->
         when (selectedTab) {
             0 -> HomeContent(
-                modifier = Modifier.padding(innerPadding),
-                searchQuery = searchQuery,
-                onSearchChange = { searchQuery = it },
-                books = books,
-                onDeleteBook = { book -> books.removeIf { it.id == book.id } }
+                    modifier = Modifier.padding(innerPadding),
+                    searchQuery = searchQuery,
+                    onSearchChange = { searchQuery = it },
+                    books = books
             )
             2 -> LibraryContent(
                 modifier = Modifier.padding(innerPadding),
-                books = books,
-                onDeleteBook = { book -> books.removeIf { it.id == book.id } }
+                books = books
             )
         }
     }
@@ -93,8 +91,7 @@ fun HomeContent(
     modifier: Modifier = Modifier,
     searchQuery: String,
     onSearchChange: (String) -> Unit,
-    books: List<Book>,
-    onDeleteBook: (Book) -> Unit
+    books: List<Book>
 ) {
     Column(
         modifier = modifier
@@ -144,7 +141,7 @@ fun HomeContent(
             modifier = Modifier.fillMaxSize()
         ) {
             items(filtered, key = { it.id }) { book ->
-                BookCard(book = book, onDelete = { onDeleteBook(book) })
+                BookCard(book = book)
             }
         }
     }
@@ -155,8 +152,7 @@ fun HomeContent(
 @Composable
 fun LibraryContent(
     modifier: Modifier = Modifier,
-    books: List<Book>,
-    onDeleteBook: (Book) -> Unit
+    books: List<Book>
 ) {
     Column(
         modifier = modifier
@@ -189,7 +185,7 @@ fun LibraryContent(
                 modifier = Modifier.fillMaxSize()
             ) {
                 items(books, key = { it.id }) { book ->
-                    BookCard(book = book, onDelete = { onDeleteBook(book) })
+                    BookCard(book = book)
                 }
             }
         }
@@ -292,8 +288,7 @@ fun BookSearchBar(query: String, onQueryChange: (String) -> Unit) {
 // ── Book Card ─────────────────────────────────────────────────────────────────
 
 @Composable
-fun BookCard(book: Book, onDelete: () -> Unit) {
-    var showMenu by remember { mutableStateOf(false) }
+fun BookCard(book: Book) {
 
     Card(
         modifier = Modifier
@@ -327,42 +322,21 @@ fun BookCard(book: Book, onDelete: () -> Unit) {
                         .padding(12.dp)
                 )
 
-                Box(modifier = Modifier.align(Alignment.TopEnd)) {
-                    Box(
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .size(28.dp)
-                            .clip(CircleShape)
-                            .background(Color.White.copy(alpha = 0.9f))
-                            .clickable { showMenu = true },
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Icon(
-                            Icons.Default.MoreVert,
-                            contentDescription = null,
-                            tint = TextPrimary,
-                            modifier = Modifier.size(14.dp)
-                        )
-                    }
-                    DropdownMenu(
-                        expanded = showMenu,
-                        onDismissRequest = { showMenu = false }
-                    ) {
-                        DropdownMenuItem(
-                            text = {
-                                Text("Hapus dari daftar", color = Color(0xFFFF4B6E), fontSize = 13.sp)
-                            },
-                            leadingIcon = {
-                                Icon(
-                                    Icons.Default.Delete,
-                                    contentDescription = null,
-                                    tint = Color(0xFFFF4B6E),
-                                    modifier = Modifier.size(16.dp)
-                                )
-                            },
-                            onClick = { showMenu = false; onDelete() }
-                        )
-                    }
+                Box(
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .padding(8.dp)
+                        .size(28.dp)
+                        .clip(CircleShape)
+                        .background(Color.White.copy(alpha = 0.9f)),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Icon(
+                        imageVector = Icons.Outlined.FavoriteBorder,
+                        contentDescription = "Favorite",
+                        tint = Color.Blue,
+                        modifier = Modifier.size(16.dp)
+                    )
                 }
             }
 

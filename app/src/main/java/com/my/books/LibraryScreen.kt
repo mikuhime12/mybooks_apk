@@ -79,10 +79,9 @@ fun LibraryScreen(
 
     Scaffold(
         bottomBar = {
-            CustomBottomNavigationBar(
+            AddScreenBottomBar(
                 selectedTab = selectedTab,
-                onTabSelected = onTabSelected,
-                primaryBlue = primaryBlue
+                onTabSelected = onTabSelected
             )
         },
         containerColor = backgroundLight

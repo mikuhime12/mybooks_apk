@@ -24,6 +24,20 @@ class MainActivity : ComponentActivity() {
 fun AppNavigation() {
     val navController = rememberNavController()
 
+    fun navigateToTab(tab: Int) {
+        when (tab) {
+            0 -> navController.navigate(HomeRoute) {
+                launchSingleTop = true
+            }
+            1 -> navController.navigate(AddRoute) {
+                launchSingleTop = true
+            }
+            2 -> navController.navigate(LibraryRoute) {
+                launchSingleTop = true
+            }
+        }
+    }
+
     NavHost(
         navController = navController,
         startDestination = SplashRoute
@@ -45,15 +59,30 @@ fun AppNavigation() {
         }
 
         composable<HomeRoute> {
-
+            HomeScreen(
+                selectedTab = 0,
+                onTabSelected = {tab ->
+                    navigateToTab(tab)
+                }
+            )
         }
 
         composable<AddRoute> {
-
+            AddScreen(
+                selectedTab = 1,
+                onTabSelected = {tab ->
+                    navigateToTab(tab)
+                }
+            )
         }
 
         composable<LibraryRoute> {
-
+            LibraryScreen(
+                selectedTab = 2,
+                onTabSelected = {tab ->
+                    navigateToTab(tab)
+                }
+            )
         }
 
 

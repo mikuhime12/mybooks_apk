@@ -219,10 +219,10 @@ fun HomeTopBar() {
                     .background(AccentBlue),
                 contentAlignment = Alignment.Center
             ) {
-                Text("L", color = White, fontSize = 16.sp, fontWeight = FontWeight.Bold)
+                Text("M", color = White, fontSize = 16.sp, fontWeight = FontWeight.Bold)
             }
             Text(
-                "Lumina Library",
+                "My Books",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = TextPrimary

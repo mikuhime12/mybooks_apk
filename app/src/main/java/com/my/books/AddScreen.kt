@@ -152,7 +152,7 @@ fun AddScreenTopBar() {
                 contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "L",
+                    text = "M",
                     color = White,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold
@@ -160,7 +160,7 @@ fun AddScreenTopBar() {
             }
 
             Text(
-                text = "Lumina Library",
+                text = "My Books",
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 color = TextPrimary
